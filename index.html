@@ -82,6 +82,9 @@
       color: #111827;
       transition: border-color 0.2s ease;
       font-weight: 400;
+      -webkit-user-select: text;
+      user-select: text;
+      -webkit-touch-callout: default;
     }
 
     textarea:focus {
@@ -233,7 +236,7 @@
       </div>
 
       <div class="textarea-wrap">
-        <textarea id="text" placeholder="Type or paste your text here..."></textarea>
+        <textarea id="text" placeholder="Type or paste your text here..." autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false"></textarea>
       </div>
 
       <div class="stats">
