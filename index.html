@@ -1,103 +1,342 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Word Counter Tool – Count Words, Characters, Sentences</title>
+  <meta name="description" content="Free online word counter tool with character counter, sentence counter, paragraph counter, and space / no-space counting. Fast, accurate, mobile-friendly, and easy to use." />
+  <meta name="keywords" content="word counter, online word counter, character counter, sentence counter, paragraph counter, word count tool, free word counter" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://shahidlogs.github.io/online-word-counter-tool/" />
 
-<title>Online Word Counter Tool – Count Words, Characters, Sentences</title>
+  <meta property="og:title" content="Online Word Counter Tool – Count Words, Characters, Sentences" />
+  <meta property="og:description" content="Free online word counter tool with character, sentence, paragraph, and space counting." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://shahidlogs.github.io/online-word-counter-tool/" />
 
-<meta name="description" content="Free online word counter tool with character counter, sentence counter, and space / no-space counting. Fast, accurate, and simple word count tool.">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-<meta name="keywords" content="word counter, online word counter, character counter, sentence counter, word count tool, free word counter">
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f3f4f6;
+      color: #1f2937;
+      line-height: 1.6;
+    }
 
-<meta name="robots" content="index, follow">
+    .wrapper {
+      max-width: 950px;
+      margin: 0 auto;
+      padding: 20px 16px 40px;
+    }
 
-<link rel="canonical" href="https://shahidlogs.github.io/online-word-counter-tool/">
+    .card {
+      background: #ffffff;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      padding: 22px;
+    }
 
-<style>
+    h1 {
+      font-size: 32px;
+      line-height: 1.2;
+      margin: 0 0 12px;
+      text-align: center;
+      color: #111827;
+    }
 
-body{
-font-family: Arial, sans-serif;
-background:#f5f5f5;
-margin:0;
-padding:0;
-text-align:center;
-}
+    .intro {
+      max-width: 760px;
+      margin: 0 auto 22px;
+      text-align: center;
+      font-size: 16px;
+      color: #4b5563;
+    }
 
-.container{
-max-width:800px;
-margin:auto;
-padding:20px;
-}
+    .textarea-wrap {
+      margin-bottom: 18px;
+    }
 
-textarea{
-width:100%;
-height:200px;
-font-size:16px;
-padding:10px;
-}
+    textarea {
+      width: 100%;
+      min-height: 240px;
+      resize: vertical;
+      border: 1px solid #d1d5db;
+      border-radius: 14px;
+      padding: 16px;
+      font-size: 17px;
+      line-height: 1.7;
+      outline: none;
+      background: #fff;
+      color: #111827;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
 
-.result{
-margin-top:20px;
-font-size:18px;
-}
+    textarea:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+    }
 
-h1{
-margin-top:20px;
-}
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
 
-</style>
+    button {
+      border: none;
+      border-radius: 12px;
+      padding: 12px 18px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
 
+    button:hover {
+      transform: translateY(-1px);
+      opacity: 0.95;
+    }
+
+    .btn-primary {
+      background: #2563eb;
+      color: #ffffff;
+    }
+
+    .btn-secondary {
+      background: #e5e7eb;
+      color: #111827;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .stat-box {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 18px 16px;
+      text-align: center;
+    }
+
+    .stat-label {
+      display: block;
+      font-size: 14px;
+      color: #6b7280;
+      margin-bottom: 8px;
+    }
+
+    .stat-value {
+      display: block;
+      font-size: 28px;
+      font-weight: 700;
+      color: #111827;
+      word-break: break-word;
+    }
+
+    .bottom-text {
+      margin-top: 26px;
+      font-size: 15px;
+      color: #4b5563;
+    }
+
+    .bottom-text h2 {
+      font-size: 22px;
+      margin: 0 0 10px;
+      color: #111827;
+    }
+
+    .bottom-text p {
+      margin: 0 0 12px;
+    }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 18px;
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    @media (max-width: 700px) {
+      .wrapper {
+        padding: 14px 12px 28px;
+      }
+
+      .card {
+        padding: 16px;
+        border-radius: 14px;
+      }
+
+      h1 {
+        font-size: 26px;
+      }
+
+      .intro {
+        font-size: 15px;
+      }
+
+      textarea {
+        min-height: 220px;
+        font-size: 16px;
+        padding: 14px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-value {
+        font-size: 24px;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Online Word Counter Tool",
+    "url": "https://shahidlogs.github.io/online-word-counter-tool/",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "description": "Free online word counter tool with character counter, sentence counter, paragraph counter, and space / no-space counting."
+  }
+  </script>
 </head>
-
 <body>
+  <div class="wrapper">
+    <div class="card">
+      <h1>Online Word Counter Tool</h1>
 
-<div class="container">
+      <p class="intro">
+        Count words, characters, sentences, and paragraphs instantly with this free online word counter tool. It is simple, fast, mobile-friendly, and easy to read.
+      </p>
 
-<h1>Online Word Counter Tool</h1>
+      <div class="textarea-wrap">
+        <textarea id="text" placeholder="Type or paste your text here..."></textarea>
+      </div>
 
-<p>
-Count words, characters, sentences, and spaces instantly with this free online word counter tool.
-</p>
+      <div class="actions">
+        <button class="btn-primary" id="copyBtn">Copy Text</button>
+        <button class="btn-secondary" id="clearBtn">Clear Text</button>
+      </div>
 
-<textarea id="text" placeholder="Type or paste your text here..."></textarea>
+      <div class="stats">
+        <div class="stat-box">
+          <span class="stat-label">Words</span>
+          <span class="stat-value" id="words">0</span>
+        </div>
 
-<div class="result">
+        <div class="stat-box">
+          <span class="stat-label">Characters (with spaces)</span>
+          <span class="stat-value" id="chars">0</span>
+        </div>
 
-<p>Words: <span id="words">0</span></p>
-<p>Characters (with spaces): <span id="chars">0</span></p>
-<p>Characters (no spaces): <span id="charsNo">0</span></p>
-<p>Sentences: <span id="sentences">0</span></p>
+        <div class="stat-box">
+          <span class="stat-label">Characters (without spaces)</span>
+          <span class="stat-value" id="charsNo">0</span>
+        </div>
 
-</div>
+        <div class="stat-box">
+          <span class="stat-label">Sentences</span>
+          <span class="stat-value" id="sentences">0</span>
+        </div>
 
-</div>
+        <div class="stat-box">
+          <span class="stat-label">Paragraphs</span>
+          <span class="stat-value" id="paragraphs">0</span>
+        </div>
 
-<script>
+        <div class="stat-box">
+          <span class="stat-label">Reading Time</span>
+          <span class="stat-value" id="readingTime">0 min</span>
+        </div>
+      </div>
 
-let text = document.getElementById("text");
+      <div class="bottom-text">
+        <h2>Free and Easy Word Count Tool</h2>
+        <p>
+          This online word counter helps writers, students, bloggers, and professionals quickly check text length. You can count total words, characters with spaces, characters without spaces, sentences, and paragraphs in real time.
+        </p>
+        <p>
+          Whether you are writing an article, assignment, caption, post, or document, this simple tool makes counting fast and easy on both desktop and mobile.
+        </p>
+      </div>
 
-text.addEventListener("input", function(){
+      <div class="footer-note">
+        Simple, fast, and mobile-friendly word counting tool.
+      </div>
+    </div>
+  </div>
 
-let value = text.value;
+  <script>
+    const text = document.getElementById("text");
+    const wordsEl = document.getElementById("words");
+    const charsEl = document.getElementById("chars");
+    const charsNoEl = document.getElementById("charsNo");
+    const sentencesEl = document.getElementById("sentences");
+    const paragraphsEl = document.getElementById("paragraphs");
+    const readingTimeEl = document.getElementById("readingTime");
+    const clearBtn = document.getElementById("clearBtn");
+    const copyBtn = document.getElementById("copyBtn");
 
-let words = value.trim().split(/\s+/).filter(Boolean).length;
+    function updateCounts() {
+      const value = text.value;
 
-let chars = value.length;
+      const trimmed = value.trim();
 
-let charsNo = value.replace(/\s/g,"").length;
+      const words = trimmed ? trimmed.split(/\s+/).filter(Boolean).length : 0;
+      const chars = value.length;
+      const charsNo = value.replace(/\s/g, "").length;
+      const sentences = trimmed ? value.split(/[.!?]+/).filter(item => item.trim().length > 0).length : 0;
+      const paragraphs = trimmed ? value.split(/\n\s*\n/).filter(item => item.trim().length > 0).length : 0;
 
-let sentences = value.split(/[.!?]+/).filter(Boolean).length;
+      const readingMinutes = words > 0 ? Math.max(1, Math.ceil(words / 200)) : 0;
 
-document.getElementById("words").textContent = words;
-document.getElementById("chars").textContent = chars;
-document.getElementById("charsNo").textContent = charsNo;
-document.getElementById("sentences").textContent = sentences;
+      wordsEl.textContent = words;
+      charsEl.textContent = chars;
+      charsNoEl.textContent = charsNo;
+      sentencesEl.textContent = sentences;
+      paragraphsEl.textContent = paragraphs;
+      readingTimeEl.textContent = readingMinutes + " min";
+    }
 
-});
+    text.addEventListener("input", updateCounts);
 
-</script>
+    clearBtn.addEventListener("click", function () {
+      text.value = "";
+      updateCounts();
+      text.focus();
+    });
 
+    copyBtn.addEventListener("click", async function () {
+      try {
+        await navigator.clipboard.writeText(text.value);
+        copyBtn.textContent = "Copied!";
+        setTimeout(() => {
+          copyBtn.textContent = "Copy Text";
+        }, 1200);
+      } catch (error) {
+        copyBtn.textContent = "Copy Failed";
+        setTimeout(() => {
+          copyBtn.textContent = "Copy Text";
+        }, 1200);
+      }
+    });
+
+    updateCounts();
+  </script>
 </body>
 </html>
