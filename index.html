@@ -294,7 +294,12 @@
     const copyBtn = document.getElementById("copyBtn");
 
     function updateCounts() {
-      const value = text.value;
+      let value = text.value;
+
+      if (value.length > 100000) {
+        value = value.substring(0, 100000);
+        text.value = value;
+      }
 
       const trimmed = value.trim();
 
