@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Online Word Counter Tool – Count Words, Characters, Sentences</title>
+
+<meta name="description" content="Free online word counter tool with character counter, sentence counter, and space / no-space counting. Fast, accurate, and simple word count tool.">
+
+<meta name="keywords" content="word counter, online word counter, character counter, sentence counter, word count tool, free word counter">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://shahidlogs.github.io/online-word-counter-tool/">
+
+<style>
+
+body{
+font-family: Arial, sans-serif;
+background:#f5f5f5;
+margin:0;
+padding:0;
+text-align:center;
+}
+
+.container{
+max-width:800px;
+margin:auto;
+padding:20px;
+}
+
+textarea{
+width:100%;
+height:200px;
+font-size:16px;
+padding:10px;
+}
+
+.result{
+margin-top:20px;
+font-size:18px;
+}
+
+h1{
+margin-top:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Online Word Counter Tool</h1>
+
+<p>
+Count words, characters, sentences, and spaces instantly with this free online word counter tool.
+</p>
+
+<textarea id="text" placeholder="Type or paste your text here..."></textarea>
+
+<div class="result">
+
+<p>Words: <span id="words">0</span></p>
+<p>Characters (with spaces): <span id="chars">0</span></p>
+<p>Characters (no spaces): <span id="charsNo">0</span></p>
+<p>Sentences: <span id="sentences">0</span></p>
+
+</div>
+
+</div>
+
+<script>
+
+let text = document.getElementById("text");
+
+text.addEventListener("input", function(){
+
+let value = text.value;
+
+let words = value.trim().split(/\s+/).filter(Boolean).length;
+
+let chars = value.length;
+
+let charsNo = value.replace(/\s/g,"").length;
+
+let sentences = value.split(/[.!?]+/).filter(Boolean).length;
+
+document.getElementById("words").textContent = words;
+document.getElementById("chars").textContent = chars;
+document.getElementById("charsNo").textContent = charsNo;
+document.getElementById("sentences").textContent = sentences;
+
+});
+
+</script>
+
+</body>
+</html>
