@@ -57,15 +57,22 @@
       color: #4b5563;
     }
 
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
     .textarea-wrap {
-      margin-bottom: 18px;
+      margin-bottom: 10px;
     }
 
     textarea {
       width: 100%;
       min-height: 240px;
       resize: vertical;
-      border: 1px solid #d1d5db;
+      border: 2px solid #d1d5db;
       border-radius: 14px;
       padding: 16px;
       font-size: 17px;
@@ -73,27 +80,21 @@
       outline: none;
       background: #fff;
       color: #111827;
-      transition: border 0.2s ease;
+      transition: border-color 0.2s ease;
+      font-weight: 400;
     }
 
     textarea:focus {
-      border: 2px solid #2563eb;
+      border-color: #2563eb;
       box-shadow: none;
-      font-weight: 600;
-    }
-
-    .actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 22px;
+      font-weight: 400;
     }
 
     button {
       border: none;
-      border-radius: 12px;
-      padding: 12px 18px;
-      font-size: 15px;
+      border-radius: 10px;
+      padding: 8px 14px;
+      font-size: 14px;
       font-weight: 700;
       cursor: pointer;
       transition: transform 0.15s ease, opacity 0.15s ease;
@@ -118,6 +119,7 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 14px;
+      margin-top: 0;
     }
 
     .stat-box {
@@ -199,7 +201,7 @@
       }
 
       button {
-        width: 100%;
+        width: auto;
       }
     }
   </style>
@@ -225,13 +227,13 @@
         Count words, characters, sentences, and paragraphs instantly with this free online word counter tool. It is simple, fast, mobile-friendly, and easy to read.
       </p>
 
-      <div class="textarea-wrap">
-        <textarea id="text" placeholder="Type or paste your text here..."></textarea>
-      </div>
-
       <div class="actions">
         <button class="btn-primary" id="copyBtn">Copy Text</button>
         <button class="btn-secondary" id="clearBtn">Clear Text</button>
+      </div>
+
+      <div class="textarea-wrap">
+        <textarea id="text" placeholder="Type or paste your text here..."></textarea>
       </div>
 
       <div class="stats">
