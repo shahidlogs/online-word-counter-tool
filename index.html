@@ -231,6 +231,7 @@
       </p>
 
       <div class="actions">
+        <button class="btn-secondary" id="pasteBtn">Paste</button>
         <button class="btn-primary" id="copyBtn">Copy Text</button>
         <button class="btn-secondary" id="clearBtn">Clear Text</button>
       </div>
@@ -297,6 +298,7 @@
     const readingTimeEl = document.getElementById("readingTime");
     const clearBtn = document.getElementById("clearBtn");
     const copyBtn = document.getElementById("copyBtn");
+    const pasteBtn = document.getElementById("pasteBtn");
 
     function updateCounts() {
       let value = text.value;
@@ -343,6 +345,24 @@
         copyBtn.textContent = "Copy Failed";
         setTimeout(() => {
           copyBtn.textContent = "Copy Text";
+        }, 1200);
+      }
+    });
+
+    pasteBtn.addEventListener("click", async function () {
+      try {
+        const clipText = await navigator.clipboard.readText();
+        text.value = clipText;
+        updateCounts();
+        text.focus();
+        pasteBtn.textContent = "Pasted!";
+        setTimeout(() => {
+          pasteBtn.textContent = "Paste";
+        }, 1200);
+      } catch (error) {
+        pasteBtn.textContent = "Paste Failed";
+        setTimeout(() => {
+          pasteBtn.textContent = "Paste";
         }, 1200);
       }
     });
