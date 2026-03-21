@@ -8,12 +8,16 @@
   <meta name="description" content="Free online word counter tool with character counter, sentence counter, paragraph counter, and space / no-space counting. Fast, accurate, mobile-friendly, and easy to use." />
   <meta name="keywords" content="word counter, online word counter, character counter, sentence counter, paragraph counter, word count tool, free word counter" />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://shahidlogs.github.io/online-word-counter-tool/" />
+  <link rel="canonical" href="https://onlinewordcountertool.com/" />
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/word-counter-logo.png" />
 
   <meta property="og:title" content="Online Word Counter Tool – Count Words, Characters, Sentences" />
   <meta property="og:description" content="Free online word counter tool with character, sentence, paragraph, and space counting." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://shahidlogs.github.io/online-word-counter-tool/" />
+  <meta property="og:url" content="https://onlinewordcountertool.com/" />
+  <meta property="og:site_name" content="Online Word Counter Tool" />
 
   <style>
     * {
@@ -41,12 +45,26 @@
       padding: 22px;
     }
 
-    h1 {
-      font-size: 32px;
-      line-height: 1.2;
+    .site-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
       margin: 0 0 12px;
       text-align: center;
-      color: #111827;
+      font-size: 32px;
+      line-height: 1.2;
+      font-weight: 700;
+      color: #2563eb;
+      letter-spacing: -0.3px;
+    }
+
+    .site-logo {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      flex-shrink: 0;
+      border-radius: 10px;
     }
 
     .intro {
@@ -100,12 +118,12 @@
       font-size: 14px;
       font-weight: 700;
       cursor: pointer;
-      transition: transform 0.15s ease, opacity 0.15s ease;
+      transition: opacity 0.15s ease, background 0.15s ease;
     }
 
     button:hover {
-      transform: translateY(-1px);
       opacity: 0.95;
+      transform: none;
     }
 
     .btn-primary {
@@ -113,9 +131,17 @@
       color: #ffffff;
     }
 
+    .btn-primary:hover {
+      background: #1d4ed8;
+    }
+
     .btn-secondary {
       background: #e5e7eb;
       color: #111827;
+    }
+
+    .btn-secondary:hover {
+      background: #dbe1e8;
     }
 
     .stats {
@@ -164,9 +190,29 @@
       margin: 0 0 12px;
     }
 
+    .site-footer {
+      text-align: center;
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid #e5e7eb;
+      font-size: 14px;
+      color: #6b7280;
+    }
+
+    .site-footer a {
+      color: #2563eb;
+      text-decoration: none;
+      margin: 0 8px;
+      font-weight: 600;
+    }
+
+    .site-footer a:hover {
+      text-decoration: underline;
+    }
+
     .footer-note {
       text-align: center;
-      margin-top: 18px;
+      margin-top: 12px;
       font-size: 13px;
       color: #6b7280;
     }
@@ -181,8 +227,14 @@
         border-radius: 14px;
       }
 
-      h1 {
-        font-size: 26px;
+      .site-title {
+        font-size: 25px;
+        gap: 8px;
+      }
+
+      .site-logo {
+        width: 34px;
+        height: 34px;
       }
 
       .intro {
@@ -206,6 +258,11 @@
       button {
         width: auto;
       }
+
+      .site-footer a {
+        display: inline-block;
+        margin: 4px 6px;
+      }
     }
   </style>
 
@@ -214,7 +271,7 @@
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Online Word Counter Tool",
-    "url": "https://shahidlogs.github.io/online-word-counter-tool/",
+    "url": "https://onlinewordcountertool.com/",
     "applicationCategory": "UtilityApplication",
     "operatingSystem": "Any",
     "description": "Free online word counter tool with character counter, sentence counter, paragraph counter, and space / no-space counting."
@@ -224,7 +281,10 @@
 <body>
   <div class="wrapper">
     <div class="card">
-      <h1>Online Word Counter Tool</h1>
+      <h1 class="site-title">
+        <img src="/word-counter-logo.png" alt="Word Counter Logo" class="site-logo" />
+        <span>Online Word Counter Tool</span>
+      </h1>
 
       <p class="intro">
         Count words, characters, sentences, and paragraphs instantly with this free online word counter tool. It is simple, fast, mobile-friendly, and easy to read.
@@ -282,6 +342,12 @@
         </p>
       </div>
 
+      <div class="site-footer">
+        <a href="/privacy.html">Privacy</a>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+      </div>
+
       <div class="footer-note">
         Simple, fast, and mobile-friendly word counting tool.
       </div>
@@ -315,7 +381,6 @@
       const charsNo = value.replace(/\s/g, "").length;
       const sentences = trimmed ? value.split(/[.!?]+/).filter(item => item.trim().length > 0).length : 0;
       const paragraphs = trimmed ? value.split(/\n\s*\n/).filter(item => item.trim().length > 0).length : 0;
-
       const readingMinutes = words > 0 ? Math.max(1, Math.ceil(words / 200)) : 0;
 
       wordsEl.textContent = words;
