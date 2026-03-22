@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Online Word Counter Tool – Count Words, Characters, Sentences</title>
-  <meta name="description" content="Free online word counter tool to count words, characters, characters without spaces, sentences, paragraphs, and reading time. Fast, accurate, mobile-friendly, and easy to use." />
-  <meta name="keywords" content="word counter, online word counter, character counter, sentence counter, paragraph counter, word count tool, free word counter" />
+  <meta name="description" content="Free online word counter tool to count words, characters, characters without spaces, sentences, paragraphs, reading time, speaking time, and more. Fast, accurate, mobile-friendly, and easy to use." />
+  <meta name="keywords" content="word counter, online word counter, character counter, sentence counter, paragraph counter, free word counter, reading time calculator, speaking time calculator" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://onlinewordcountertool.com/" />
 
@@ -15,174 +15,488 @@
   <link rel="apple-touch-icon" href="/favicon.ico?v=3">
 
   <meta property="og:title" content="Online Word Counter Tool – Count Words, Characters, Sentences" />
-  <meta property="og:description" content="Free online word counter tool with character, sentence, paragraph, and space counting." />
+  <meta property="og:description" content="Free online word counter tool with advanced text stats, notes, reading time, speaking time, and clean mobile-friendly design." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://onlinewordcountertool.com/" />
   <meta property="og:site_name" content="Online Word Counter Tool" />
 
   <style>
+    :root {
+      --bg-1: #0f766e;
+      --bg-2: #115e59;
+      --card: rgba(255,255,255,0.12);
+      --card-solid: #ffffff;
+      --muted: #d9f3ef;
+      --text: #ffffff;
+      --dark: #0f172a;
+      --dark-soft: #334155;
+      --line: rgba(255,255,255,0.18);
+      --accent: #f59e0b;
+      --accent-hover: #d97706;
+      --soft-bg: #f8fafc;
+      --soft-line: #e2e8f0;
+      --teal-soft: #e6fffb;
+      --shadow: 0 20px 50px rgba(0,0,0,0.18);
+      --radius-xl: 26px;
+      --radius-lg: 18px;
+      --radius-md: 14px;
+    }
+
     * {
       box-sizing: border-box;
     }
 
-    body {
+    html, body {
       margin: 0;
+      padding: 0;
       font-family: Arial, sans-serif;
-      background: #f3f4f6;
-      color: #1f2937;
-      line-height: 1.6;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.08), transparent 30%),
+        linear-gradient(135deg, var(--bg-1), var(--bg-2));
+      min-height: 100%;
+    }
+
+    body {
+      line-height: 1.5;
     }
 
     .wrapper {
-      max-width: 950px;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 20px 16px 40px;
+      padding: 20px 14px 40px;
     }
 
-    .card {
-      background: #f8fafc;
-      border-radius: 18px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      padding: 22px;
+    .hero {
+      background: linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-top {
+      padding: 24px 22px 10px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: #ecfeff;
+      margin-bottom: 14px;
+      text-transform: uppercase;
     }
 
     .site-title {
-      font-size: 32px;
-      line-height: 1.2;
-      margin: 0 0 12px;
-      text-align: center;
-      color: #2563eb;
-      font-weight: 700;
-      letter-spacing: -0.3px;
+      margin: 0;
+      font-size: 38px;
+      line-height: 1.15;
+      font-weight: 800;
+      letter-spacing: -0.5px;
     }
 
     .intro {
-      max-width: 760px;
-      margin: 0 auto 22px;
-      text-align: center;
-      font-size: 16px;
-      color: #4b5563;
+      max-width: 820px;
+      margin: 12px auto 0;
+      font-size: 17px;
+      color: var(--muted);
     }
 
-    .actions {
+    .app-shell {
+      margin: 20px auto 0;
+      padding: 14px;
+    }
+
+    .phone-card {
+      background: #f8fafc;
+      color: var(--dark);
+      border-radius: 34px;
+      padding: 18px;
+      max-width: 960px;
+      margin: 0 auto;
+      box-shadow: 0 14px 40px rgba(0,0,0,0.18);
+    }
+
+    .app-card {
+      background: linear-gradient(180deg, #155e63 0%, #115e59 100%);
+      border-radius: 24px;
+      padding: 16px;
+      color: #ffffff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .app-header {
       display: flex;
       gap: 10px;
+      align-items: center;
+      justify-content: space-between;
       flex-wrap: wrap;
-      margin-bottom: 10px;
+      margin-bottom: 14px;
+    }
+
+    .app-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .top-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .action-btn, .note-btn, .tab-btn {
+      border: none;
+      cursor: pointer;
+      transition: 0.18s ease;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .action-btn {
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.13);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .action-btn:hover {
+      background: rgba(255,255,255,0.18);
+    }
+
+    .tab-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .tab-btn {
+      padding: 12px 10px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.08);
+      color: #dff7f4;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .tab-btn.active {
+      background: #ffffff;
+      color: #0f172a;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .summary-box {
+      background: rgba(255,255,255,0.96);
+      color: var(--dark);
+      border-radius: 18px;
+      padding: 14px 12px;
+      text-align: center;
+      min-height: 92px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .summary-label {
+      display: block;
+      font-size: 13px;
+      color: #64748b;
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    .summary-value {
+      display: block;
+      font-size: 31px;
+      font-weight: 800;
+      line-height: 1.1;
+      word-break: break-word;
+    }
+
+    .panel {
+      display: none;
+    }
+
+    .panel.active {
+      display: block;
+    }
+
+    .editor-card,
+    .stats-card,
+    .notes-card,
+    .settings-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 22px;
+      padding: 14px;
     }
 
     .textarea-wrap {
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     textarea {
       width: 100%;
-      min-height: 240px;
+      min-height: 300px;
       resize: vertical;
-      border: 2px solid #d1d5db;
-      border-radius: 14px;
-      padding: 16px;
-      font-size: 17px;
-      line-height: 1.7;
+      border: none;
       outline: none;
-      background: #fff;
-      color: #111827;
-      transition: border-color 0.2s ease;
-      font-weight: 400;
-      -webkit-user-select: text;
-      user-select: text;
-      -webkit-touch-callout: default;
+      border-radius: 18px;
+      padding: 18px;
+      font-size: 17px;
+      line-height: 1.75;
+      background: rgba(255,255,255,0.96);
+      color: #0f172a;
+      box-shadow: inset 0 0 0 2px rgba(15, 23, 42, 0.05);
     }
 
-    textarea:focus {
-      border-color: #2563eb;
-      box-shadow: none;
-      font-weight: 400;
+    .editor-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
     }
 
-    button {
+    .note-btn {
+      padding: 11px 16px;
+      border-radius: 12px;
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .note-btn:hover {
+      background: var(--accent-hover);
+    }
+
+    .secondary-btn {
+      background: rgba(255,255,255,0.14);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .secondary-btn:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    .stat-section {
+      background: rgba(255,255,255,0.96);
+      color: #0f172a;
+      border-radius: 18px;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+
+    .stat-section summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 16px 18px;
+      font-size: 17px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: 0.2px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .stat-section summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .stat-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .stat-table td {
+      padding: 13px 18px;
+      border-bottom: 1px solid #e2e8f0;
+      font-size: 15px;
+    }
+
+    .stat-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .stat-table td:first-child {
+      color: #334155;
+      font-weight: 600;
+    }
+
+    .stat-table td:last-child {
+      text-align: right;
+      color: #0f172a;
+      font-weight: 800;
+    }
+
+    .notes-top {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    .notes-empty {
+      background: rgba(255,255,255,0.94);
+      color: #334155;
+      padding: 18px;
+      border-radius: 18px;
+      text-align: center;
+      font-size: 15px;
+    }
+
+    .notes-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .note-item {
+      background: rgba(255,255,255,0.97);
+      color: #0f172a;
+      border-radius: 18px;
+      padding: 14px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .note-meta {
+      flex: 1 1 300px;
+      min-width: 0;
+    }
+
+    .note-title {
+      margin: 0 0 6px;
+      font-size: 16px;
+      font-weight: 800;
+      word-break: break-word;
+    }
+
+    .note-sub {
+      margin: 0;
+      font-size: 13px;
+      color: #64748b;
+    }
+
+    .note-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .mini-btn {
       border: none;
       border-radius: 10px;
-      padding: 8px 14px;
-      font-size: 14px;
+      padding: 9px 12px;
+      font-size: 13px;
       font-weight: 700;
       cursor: pointer;
-      transition: opacity 0.15s ease, background 0.15s ease;
     }
 
-    button:hover {
-      opacity: 0.95;
-      transform: none;
+    .mini-open {
+      background: #0f766e;
+      color: #fff;
     }
 
-    .btn-primary {
-      background: #2563eb;
-      color: #ffffff;
+    .mini-rename {
+      background: #f59e0b;
+      color: #fff;
     }
 
-    .btn-primary:hover {
-      background: #1d4ed8;
+    .mini-delete {
+      background: #ef4444;
+      color: #fff;
     }
 
-    .btn-secondary {
-      background: #e5e7eb;
-      color: #111827;
-    }
-
-    .btn-secondary:hover {
-      background: #dbe1e8;
-    }
-
-    .stats {
+    .settings-list {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-      margin-top: 0;
+      gap: 12px;
     }
 
-    .stat-box {
-      background: #f9fafb;
-      border: 1px solid #e5e7eb;
-      border-radius: 16px;
-      padding: 18px 16px;
-      text-align: center;
+    .setting-row {
+      background: rgba(255,255,255,0.96);
+      color: #0f172a;
+      border-radius: 18px;
+      padding: 15px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
-    .stat-label {
-      display: block;
-      font-size: 14px;
-      color: #6b7280;
-      margin-bottom: 8px;
+    .setting-text h3 {
+      margin: 0 0 4px;
+      font-size: 16px;
     }
 
-    .stat-value {
-      display: block;
-      font-size: 28px;
+    .setting-text p {
+      margin: 0;
+      font-size: 13px;
+      color: #64748b;
+    }
+
+    .switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       font-weight: 700;
-      color: #111827;
-      word-break: break-word;
+      color: #0f172a;
+    }
+
+    .status-line {
+      margin-top: 12px;
+      font-size: 13px;
+      color: #d9f3ef;
+      text-align: center;
+      min-height: 18px;
     }
 
     .bottom-text {
       margin-top: 26px;
-      font-size: 15px;
-      color: #4b5563;
+      background: rgba(255,255,255,0.12);
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding: 24px 22px 10px;
+    }
+
+    .bottom-text h2,
+    .bottom-text h3 {
+      color: #ffffff;
     }
 
     .bottom-text h2 {
-      font-size: 22px;
-      margin: 20px 0 10px;
-      color: #111827;
+      font-size: 24px;
+      margin: 0 0 12px;
     }
 
     .bottom-text h3 {
       font-size: 18px;
       margin: 18px 0 8px;
-      color: #111827;
     }
 
-    .bottom-text p {
-      margin: 0 0 12px;
+    .bottom-text p,
+    .bottom-text li {
+      color: #d9f3ef;
+      font-size: 15px;
     }
 
     .bottom-text ul {
@@ -190,24 +504,19 @@
       padding: 0;
     }
 
-    .bottom-text li {
-      margin-bottom: 6px;
-    }
-
     .site-footer {
       text-align: center;
-      margin-top: 24px;
-      padding-top: 16px;
-      border-top: 1px solid #e5e7eb;
+      margin-top: 26px;
+      padding: 18px 16px 0;
       font-size: 14px;
-      color: #6b7280;
+      color: #d9f3ef;
     }
 
     .site-footer a {
-      color: #2563eb;
+      color: #ffffff;
       text-decoration: none;
       margin: 0 8px;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .site-footer a:hover {
@@ -216,50 +525,131 @@
 
     .footer-note {
       text-align: center;
-      margin-top: 12px;
+      margin-top: 10px;
       font-size: 13px;
-      color: #6b7280;
+      color: #d9f3ef;
+      padding-bottom: 18px;
     }
 
-    @media (max-width: 700px) {
+    body.light-mode {
+      background: linear-gradient(135deg, #d1fae5, #ecfeff);
+      color: #0f172a;
+    }
+
+    body.light-mode .hero {
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(15,23,42,0.08);
+    }
+
+    body.light-mode .site-title,
+    body.light-mode .bottom-text h2,
+    body.light-mode .bottom-text h3,
+    body.light-mode .site-footer a {
+      color: #0f172a;
+    }
+
+    body.light-mode .intro,
+    body.light-mode .bottom-text p,
+    body.light-mode .bottom-text li,
+    body.light-mode .site-footer,
+    body.light-mode .footer-note {
+      color: #334155;
+    }
+
+    body.light-mode .app-card {
+      background: linear-gradient(180deg, #0f766e 0%, #0b5f5a 100%);
+    }
+
+    @media (max-width: 900px) {
+      .summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 680px) {
       .wrapper {
-        padding: 14px 12px 28px;
+        padding: 14px 10px 28px;
       }
 
-      .card {
-        padding: 16px;
-        border-radius: 14px;
+      .hero-top {
+        padding: 18px 14px 8px;
       }
 
       .site-title {
-        font-size: 26px;
+        font-size: 29px;
       }
 
       .intro {
         font-size: 15px;
       }
 
+      .phone-card {
+        border-radius: 26px;
+        padding: 12px;
+      }
+
+      .app-card {
+        border-radius: 18px;
+        padding: 12px;
+      }
+
+      .tab-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .summary-box {
+        min-height: 84px;
+      }
+
+      .summary-value {
+        font-size: 26px;
+      }
+
       textarea {
-        min-height: 220px;
+        min-height: 240px;
         font-size: 16px;
         padding: 14px;
       }
 
-      .stats {
+      .stat-table td {
+        padding: 11px 14px;
+        font-size: 14px;
+      }
+
+      .editor-actions,
+      .top-actions,
+      .notes-top {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .action-btn,
+      .note-btn {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 440px) {
+      .summary-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .editor-actions,
+      .top-actions,
+      .notes-top {
         grid-template-columns: 1fr;
       }
 
-      .stat-value {
-        font-size: 24px;
+      .summary-value {
+        font-size: 23px;
       }
 
-      button {
-        width: auto;
-      }
-
-      .site-footer a {
-        display: inline-block;
-        margin: 4px 6px;
+      .site-title {
+        font-size: 25px;
       }
     }
   </style>
@@ -272,131 +662,213 @@
     "url": "https://onlinewordcountertool.com/",
     "applicationCategory": "UtilityApplication",
     "operatingSystem": "Any",
-    "description": "Free online word counter tool with character counter, sentence counter, paragraph counter, and space / no-space counting."
+    "description": "Free online word counter tool with character counter, sentence counter, paragraph counter, notes, and advanced text statistics."
   }
   </script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-8JZSLH6SX5"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-8JZSLH6SX5');
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8JZSLH6SX5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-8JZSLH6SX5');
+  </script>
 </head>
 <body>
   <div class="wrapper">
-    <div class="card">
-      <h1 class="site-title">
-      Online Word Counter Tool – Word, Character, Sentence Counter
-      </h1>
-
-      <p class="intro">
-        Count words, characters, characters without spaces, sentences, paragraphs, and reading time instantly with this free online word counter tool.
-      </p>
-
-      <div class="actions">
-        <button class="btn-secondary" id="pasteBtn">Paste</button>
-        <button class="btn-primary" id="copyBtn">Copy Text</button>
-        <button class="btn-secondary" id="clearBtn">Clear Text</button>
+    <div class="hero">
+      <div class="hero-top">
+        <div class="eyebrow">Advanced Text Counter</div>
+        <h1 class="site-title">Online Word Counter Tool – Word, Character, Sentence Counter</h1>
+        <p class="intro">
+          Count words, characters, characters without spaces, sentences, paragraphs, reading time, speaking time, and more with a cleaner modern interface and built-in notes.
+        </p>
       </div>
 
-      <div class="textarea-wrap">
-        <textarea id="text" placeholder="Type or paste your text here..." autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false"></textarea>
-      </div>
+      <div class="app-shell">
+        <div class="phone-card">
+          <div class="app-card">
+            <div class="app-header">
+              <h2 class="app-title">Text Analyzer</h2>
+              <div class="top-actions">
+                <button class="action-btn" id="pasteBtn">Paste</button>
+                <button class="action-btn" id="copyBtn">Copy</button>
+                <button class="action-btn" id="clearBtn">Clear</button>
+              </div>
+            </div>
 
-      <div class="stats">
-        <div class="stat-box">
-          <span class="stat-label">Words</span>
-          <span class="stat-value" id="words">0</span>
-        </div>
+            <div class="tab-row">
+              <button class="tab-btn active" data-tab="inputPanel">Input</button>
+              <button class="tab-btn" data-tab="statsPanel">Stats</button>
+              <button class="tab-btn" data-tab="notesPanel">Notes</button>
+              <button class="tab-btn" data-tab="settingsPanel">Settings</button>
+            </div>
 
-        <div class="stat-box">
-          <span class="stat-label">Characters (with spaces)</span>
-          <span class="stat-value" id="chars">0</span>
-        </div>
+            <div class="summary-grid">
+              <div class="summary-box">
+                <span class="summary-label">Characters</span>
+                <span class="summary-value" id="chars">0</span>
+              </div>
+              <div class="summary-box">
+                <span class="summary-label">Words</span>
+                <span class="summary-value" id="words">0</span>
+              </div>
+              <div class="summary-box">
+                <span class="summary-label">Sentences</span>
+                <span class="summary-value" id="sentences">0</span>
+              </div>
+              <div class="summary-box">
+                <span class="summary-label">Paragraphs</span>
+                <span class="summary-value" id="paragraphs">0</span>
+              </div>
+            </div>
 
-        <div class="stat-box">
-          <span class="stat-label">Characters (without spaces)</span>
-          <span class="stat-value" id="charsNo">0</span>
-        </div>
+            <div class="panel active" id="inputPanel">
+              <div class="editor-card">
+                <div class="textarea-wrap">
+                  <textarea id="text" placeholder="Type or paste your text here..." autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false"></textarea>
+                </div>
+                <div class="editor-actions">
+                  <button class="note-btn" id="saveNoteBtn">Save Note</button>
+                  <button class="note-btn secondary-btn" id="downloadBtn">Download TXT</button>
+                  <button class="note-btn secondary-btn" id="sampleBtn">Load Sample</button>
+                </div>
+                <div class="status-line" id="statusLine"></div>
+              </div>
+            </div>
 
-        <div class="stat-box">
-          <span class="stat-label">Sentences</span>
-          <span class="stat-value" id="sentences">0</span>
-        </div>
+            <div class="panel" id="statsPanel">
+              <div class="stats-card">
+                <details class="stat-section" open>
+                  <summary>Basic Stats <span>▾</span></summary>
+                  <table class="stat-table">
+                    <tr><td>Characters</td><td id="chars2">0</td></tr>
+                    <tr><td>Characters without Spaces</td><td id="charsNo">0</td></tr>
+                    <tr><td>Words</td><td id="words2">0</td></tr>
+                    <tr><td>Sentences</td><td id="sentences2">0</td></tr>
+                    <tr><td>Paragraphs</td><td id="paragraphs2">0</td></tr>
+                    <tr><td>Size</td><td id="sizeBytes">0 B</td></tr>
+                  </table>
+                </details>
 
-        <div class="stat-box">
-          <span class="stat-label">Paragraphs</span>
-          <span class="stat-value" id="paragraphs">0</span>
-        </div>
+                <details class="stat-section" open>
+                  <summary>Extra Stats <span>▾</span></summary>
+                  <table class="stat-table">
+                    <tr><td>Unique Words</td><td id="uniqueWords">0</td></tr>
+                    <tr><td>Unique Word Ratio</td><td id="uniqueRatio">0%</td></tr>
+                    <tr><td>Average Word Length</td><td id="avgWordLength">0</td></tr>
+                    <tr><td>Average Sentence Length (Words)</td><td id="avgSentenceWords">0</td></tr>
+                    <tr><td>Average Sentence Length (Characters)</td><td id="avgSentenceChars">0</td></tr>
+                  </table>
+                </details>
 
-        <div class="stat-box">
-          <span class="stat-label">Reading Time</span>
-          <span class="stat-value" id="readingTime">0 min</span>
+                <details class="stat-section" open>
+                  <summary>Length Stats <span>▾</span></summary>
+                  <table class="stat-table">
+                    <tr><td>Shortest Sentence (Words)</td><td id="shortestSentenceWords">0</td></tr>
+                    <tr><td>Longest Sentence (Words)</td><td id="longestSentenceWords">0</td></tr>
+                    <tr><td>Longest Word Length</td><td id="longestWordLength">0</td></tr>
+                  </table>
+                </details>
+
+                <details class="stat-section" open>
+                  <summary>Time Stats <span>▾</span></summary>
+                  <table class="stat-table">
+                    <tr><td>Reading Time</td><td id="readingTime">00:00</td></tr>
+                    <tr><td>Speaking Time</td><td id="speakingTime">00:00</td></tr>
+                    <tr><td>Hand Writing Time</td><td id="handwritingTime">00:00</td></tr>
+                  </table>
+                </details>
+              </div>
+            </div>
+
+            <div class="panel" id="notesPanel">
+              <div class="notes-card">
+                <div class="notes-top">
+                  <button class="note-btn" id="saveNoteBtn2">Save Current Text</button>
+                  <button class="note-btn secondary-btn" id="exportNotesBtn">Export Notes</button>
+                </div>
+                <div id="notesWrap"></div>
+              </div>
+            </div>
+
+            <div class="panel" id="settingsPanel">
+              <div class="settings-card">
+                <div class="settings-list">
+                  <div class="setting-row">
+                    <div class="setting-text">
+                      <h3>Auto Save Text</h3>
+                      <p>Automatically save current text in your browser.</p>
+                    </div>
+                    <label class="switch">
+                      <input type="checkbox" id="autosaveToggle" checked>
+                      <span>On</span>
+                    </label>
+                  </div>
+
+                  <div class="setting-row">
+                    <div class="setting-text">
+                      <h3>Light Mode</h3>
+                      <p>Switch to a brighter background style.</p>
+                    </div>
+                    <label class="switch">
+                      <input type="checkbox" id="lightModeToggle">
+                      <span>Enable</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
 
       <div class="bottom-text">
         <h2>Free and Easy Word Count Tool</h2>
         <p>
-          This online word counter helps writers, students, bloggers, and professionals quickly check text length. You can count total words, characters with spaces, characters without spaces, sentences, and paragraphs in real time.
+          This online word counter helps writers, students, bloggers, marketers, and professionals instantly check text length. It shows words, characters, characters without spaces, sentences, paragraphs, reading time, speaking time, and more in real time.
         </p>
         <p>
-          Whether you are writing an article, assignment, caption, post, or document, this simple tool makes counting fast and easy on both desktop and mobile.
+          The improved layout is designed to feel cleaner and more modern on both desktop and mobile devices, while still keeping the tool fast and simple to use.
         </p>
 
-        <h2>What Is an Online Word Counter?</h2>
-        <p>
-          An online word counter is a tool that measures text length instantly. It calculates the number of words, characters, sentences, paragraphs, and estimated reading time without requiring any software installation.
-        </p>
-
-        <h2>How to Use This Tool</h2>
-        <p>
-          Type your text or paste it into the box above. The tool automatically updates all counts in real time, so you can quickly check your content before publishing, submitting, or sharing it.
-        </p>
-
-        <h2>Why Use This Word Counter?</h2>
+        <h2>What Can This Tool Count?</h2>
         <ul>
-          <li>Fast and accurate results</li>
-          <li>No signup or login required</li>
-          <li>Works on desktop and mobile</li>
-          <li>Counts words and characters instantly</li>
-          <li>Shows characters with and without spaces</li>
-          <li>Free to use anytime</li>
+          <li>Total words</li>
+          <li>Characters with spaces</li>
+          <li>Characters without spaces</li>
+          <li>Sentences and paragraphs</li>
+          <li>Reading, speaking, and handwriting time</li>
+          <li>Average word and sentence length</li>
+          <li>Unique word ratio</li>
         </ul>
+
+        <h2>Notes and Saved Text</h2>
+        <p>
+          You can save your text as notes directly in your browser. This is useful for drafts, captions, assignments, blog ideas, and repeated writing work that you want to access later without losing the counts.
+        </p>
 
         <h2>Who Can Use This Tool?</h2>
         <p>
-          This tool is useful for students, writers, bloggers, journalists, marketers, SEO specialists, social media managers, and anyone who needs to control text length accurately.
-        </p>
-
-        <h2>Common Uses of a Word Counter Tool</h2>
-        <p>
-          People use word counters for essays, blog posts, assignments, articles, ad copy, captions, meta descriptions, social media posts, and other content where length matters.
+          This tool is useful for students, writers, bloggers, journalists, copywriters, SEO specialists, social media managers, and anyone who needs accurate text measurement.
         </p>
 
         <h2>Frequently Asked Questions</h2>
 
-        <h3>Does this tool store my text?</h3>
+        <h3>Does this tool store my text online?</h3>
         <p>
-          No. For normal use, your text is processed in your browser to calculate counts.
+          No. Your text and notes are stored in your browser unless you manually copy or export them.
         </p>
 
-        <h3>Is this word counter free?</h3>
+        <h3>Is this tool mobile-friendly?</h3>
         <p>
-          Yes, this online word counter is completely free to use.
+          Yes. The layout is optimized for desktop, tablet, and mobile screens.
         </p>
 
-        <h3>Does it count characters without spaces?</h3>
+        <h3>Can I save my notes?</h3>
         <p>
-          Yes. The tool shows both characters with spaces and characters without spaces.
-        </p>
-
-        <h3>Can I use it on mobile?</h3>
-        <p>
-          Yes. The tool is mobile-friendly and works on phones, tablets, and desktop devices.
+          Yes. You can save the current text as a named note and reopen it later from the Notes section.
         </p>
       </div>
 
@@ -407,7 +879,7 @@
       </div>
 
       <div class="footer-note">
-        Simple, fast, and mobile-friendly word counting tool.
+        Clean, advanced, and mobile-friendly word counting tool.
       </div>
     </div>
   </div>
@@ -416,38 +888,276 @@
     const text = document.getElementById("text");
     const wordsEl = document.getElementById("words");
     const charsEl = document.getElementById("chars");
-    const charsNoEl = document.getElementById("charsNo");
     const sentencesEl = document.getElementById("sentences");
     const paragraphsEl = document.getElementById("paragraphs");
+
+    const wordsEl2 = document.getElementById("words2");
+    const charsEl2 = document.getElementById("chars2");
+    const charsNoEl = document.getElementById("charsNo");
+    const sentencesEl2 = document.getElementById("sentences2");
+    const paragraphsEl2 = document.getElementById("paragraphs2");
+    const sizeBytesEl = document.getElementById("sizeBytes");
+
+    const uniqueWordsEl = document.getElementById("uniqueWords");
+    const uniqueRatioEl = document.getElementById("uniqueRatio");
+    const avgWordLengthEl = document.getElementById("avgWordLength");
+    const avgSentenceWordsEl = document.getElementById("avgSentenceWords");
+    const avgSentenceCharsEl = document.getElementById("avgSentenceChars");
+    const shortestSentenceWordsEl = document.getElementById("shortestSentenceWords");
+    const longestSentenceWordsEl = document.getElementById("longestSentenceWords");
+    const longestWordLengthEl = document.getElementById("longestWordLength");
+
     const readingTimeEl = document.getElementById("readingTime");
+    const speakingTimeEl = document.getElementById("speakingTime");
+    const handwritingTimeEl = document.getElementById("handwritingTime");
+
     const clearBtn = document.getElementById("clearBtn");
     const copyBtn = document.getElementById("copyBtn");
     const pasteBtn = document.getElementById("pasteBtn");
+    const saveNoteBtn = document.getElementById("saveNoteBtn");
+    const saveNoteBtn2 = document.getElementById("saveNoteBtn2");
+    const downloadBtn = document.getElementById("downloadBtn");
+    const sampleBtn = document.getElementById("sampleBtn");
+    const exportNotesBtn = document.getElementById("exportNotesBtn");
+    const statusLine = document.getElementById("statusLine");
+    const notesWrap = document.getElementById("notesWrap");
+    const autosaveToggle = document.getElementById("autosaveToggle");
+    const lightModeToggle = document.getElementById("lightModeToggle");
+
+    const tabButtons = document.querySelectorAll(".tab-btn");
+    const panels = document.querySelectorAll(".panel");
+
+    const STORAGE_TEXT = "owct_saved_text_v2";
+    const STORAGE_NOTES = "owct_saved_notes_v2";
+    const STORAGE_AUTOSAVE = "owct_autosave_v2";
+    const STORAGE_LIGHTMODE = "owct_lightmode_v2";
+
+    function showStatus(message) {
+      statusLine.textContent = message;
+      clearTimeout(showStatus._timer);
+      showStatus._timer = setTimeout(() => {
+        statusLine.textContent = "";
+      }, 1600);
+    }
+
+    function formatDuration(seconds) {
+      const mins = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+      return String(mins).padStart(2, "0") + ":" + String(secs).padStart(2, "0");
+    }
+
+    function formatBytes(bytes) {
+      if (bytes < 1024) return bytes + " B";
+      if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(2) + " KB";
+      return (bytes / (1024 * 1024)).toFixed(2) + " MB";
+    }
+
+    function getSentences(value) {
+      return value
+        .replace(/\n+/g, " ")
+        .split(/[.!?]+/)
+        .map(s => s.trim())
+        .filter(Boolean);
+    }
+
+    function getWordsArray(value) {
+      return value
+        .trim()
+        .split(/\s+/)
+        .map(w => w.replace(/[^\p{L}\p{N}'’-]/gu, ""))
+        .filter(Boolean);
+    }
 
     function updateCounts() {
       let value = text.value;
 
-      if (value.length > 100000) {
-        value = value.substring(0, 100000);
+      if (value.length > 150000) {
+        value = value.substring(0, 150000);
         text.value = value;
       }
 
       const trimmed = value.trim();
-
-      const words = trimmed ? trimmed.split(/\s+/).filter(Boolean).length : 0;
+      const wordsArr = trimmed ? getWordsArray(value) : [];
+      const words = wordsArr.length;
       const chars = value.length;
       const charsNo = value.replace(/\s/g, "").length;
-      const sentences = trimmed ? value.split(/[.!?]+/).filter(item => item.trim().length > 0).length : 0;
+      const sentenceList = trimmed ? getSentences(value) : [];
+      const sentences = sentenceList.length;
       const paragraphs = trimmed ? value.split(/\n\s*\n/).filter(item => item.trim().length > 0).length : 0;
-      const readingMinutes = words > 0 ? Math.max(1, Math.ceil(words / 200)) : 0;
+
+      const uniqueWordsSet = new Set(wordsArr.map(w => w.toLowerCase()));
+      const uniqueWords = uniqueWordsSet.size;
+      const uniqueRatio = words ? ((uniqueWords / words) * 100).toFixed(2) : "0.00";
+
+      const totalWordChars = wordsArr.reduce((sum, w) => sum + w.length, 0);
+      const avgWordLength = words ? (totalWordChars / words).toFixed(3) : "0";
+
+      const sentenceWordCounts = sentenceList.map(s => getWordsArray(s).length).filter(Boolean);
+      const sentenceCharCounts = sentenceList.map(s => s.length).filter(Boolean);
+
+      const avgSentenceWords = sentenceWordCounts.length
+        ? (sentenceWordCounts.reduce((a,b) => a+b, 0) / sentenceWordCounts.length).toFixed(2)
+        : "0";
+
+      const avgSentenceChars = sentenceCharCounts.length
+        ? (sentenceCharCounts.reduce((a,b) => a+b, 0) / sentenceCharCounts.length).toFixed(2)
+        : "0";
+
+      const shortestSentenceWords = sentenceWordCounts.length ? Math.min(...sentenceWordCounts) : 0;
+      const longestSentenceWords = sentenceWordCounts.length ? Math.max(...sentenceWordCounts) : 0;
+      const longestWordLength = wordsArr.length ? Math.max(...wordsArr.map(w => w.length)) : 0;
+
+      const readingSeconds = words ? Math.ceil((words / 200) * 60) : 0;
+      const speakingSeconds = words ? Math.ceil((words / 130) * 60) : 0;
+      const handwritingSeconds = words ? Math.ceil((words / 20) * 60) : 0;
 
       wordsEl.textContent = words;
       charsEl.textContent = chars;
-      charsNoEl.textContent = charsNo;
       sentencesEl.textContent = sentences;
       paragraphsEl.textContent = paragraphs;
-      readingTimeEl.textContent = readingMinutes + " min";
+
+      wordsEl2.textContent = words;
+      charsEl2.textContent = chars;
+      charsNoEl.textContent = charsNo;
+      sentencesEl2.textContent = sentences;
+      paragraphsEl2.textContent = paragraphs;
+      sizeBytesEl.textContent = formatBytes(new Blob([value]).size);
+
+      uniqueWordsEl.textContent = uniqueWords;
+      uniqueRatioEl.textContent = uniqueRatio + "%";
+      avgWordLengthEl.textContent = avgWordLength;
+      avgSentenceWordsEl.textContent = avgSentenceWords;
+      avgSentenceCharsEl.textContent = avgSentenceChars;
+      shortestSentenceWordsEl.textContent = shortestSentenceWords;
+      longestSentenceWordsEl.textContent = longestSentenceWords;
+      longestWordLengthEl.textContent = longestWordLength;
+
+      readingTimeEl.textContent = formatDuration(readingSeconds);
+      speakingTimeEl.textContent = formatDuration(speakingSeconds);
+      handwritingTimeEl.textContent = formatDuration(handwritingSeconds);
+
+      if (autosaveToggle.checked) {
+        localStorage.setItem(STORAGE_TEXT, value);
+      }
     }
+
+    function getSavedNotes() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_NOTES)) || [];
+      } catch {
+        return [];
+      }
+    }
+
+    function setSavedNotes(notes) {
+      localStorage.setItem(STORAGE_NOTES, JSON.stringify(notes));
+    }
+
+    function renderNotes() {
+      const notes = getSavedNotes();
+
+      if (!notes.length) {
+        notesWrap.innerHTML = '<div class="notes-empty">No saved notes yet. Save your current text to keep it for later.</div>';
+        return;
+      }
+
+      notesWrap.innerHTML = '<div class="notes-list">' + notes.map(note => `
+        <div class="note-item">
+          <div class="note-meta">
+            <p class="note-title">${escapeHtml(note.title)}</p>
+            <p class="note-sub">${note.words} words • ${new Date(note.createdAt).toLocaleString()}</p>
+          </div>
+          <div class="note-actions">
+            <button class="mini-btn mini-open" onclick="openNote('${note.id}')">Open</button>
+            <button class="mini-btn mini-rename" onclick="renameNote('${note.id}')">Rename</button>
+            <button class="mini-btn mini-delete" onclick="deleteNote('${note.id}')">Delete</button>
+          </div>
+        </div>
+      `).join('') + '</div>';
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function saveCurrentNote() {
+      const value = text.value.trim();
+
+      if (!value) {
+        showStatus("Write some text first.");
+        return;
+      }
+
+      const title = prompt("What would you like to call this note?", "Note");
+      if (title === null) return;
+
+      const words = getWordsArray(value).length;
+      const notes = getSavedNotes();
+
+      notes.unshift({
+        id: Date.now().toString(),
+        title: title.trim() || "Note",
+        content: text.value,
+        words,
+        createdAt: new Date().toISOString()
+      });
+
+      setSavedNotes(notes);
+      renderNotes();
+      showStatus("Note saved.");
+    }
+
+    window.openNote = function(id) {
+      const notes = getSavedNotes();
+      const note = notes.find(n => n.id === id);
+      if (!note) return;
+
+      text.value = note.content;
+      updateCounts();
+      switchTab("inputPanel");
+      text.focus();
+      showStatus("Note opened.");
+    }
+
+    window.renameNote = function(id) {
+      const notes = getSavedNotes();
+      const note = notes.find(n => n.id === id);
+      if (!note) return;
+
+      const newTitle = prompt("Rename note", note.title);
+      if (newTitle === null) return;
+
+      note.title = newTitle.trim() || note.title;
+      setSavedNotes(notes);
+      renderNotes();
+      showStatus("Note renamed.");
+    }
+
+    window.deleteNote = function(id) {
+      const notes = getSavedNotes();
+      const filtered = notes.filter(n => n.id !== id);
+      setSavedNotes(filtered);
+      renderNotes();
+      showStatus("Note deleted.");
+    }
+
+    function switchTab(tabId) {
+      tabButtons.forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.tab === tabId);
+      });
+      panels.forEach(panel => {
+        panel.classList.toggle("active", panel.id === tabId);
+      });
+    }
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener("click", () => switchTab(btn.dataset.tab));
+    });
 
     text.addEventListener("input", updateCounts);
 
@@ -455,20 +1165,15 @@
       text.value = "";
       updateCounts();
       text.focus();
+      showStatus("Text cleared.");
     });
 
     copyBtn.addEventListener("click", async function () {
       try {
         await navigator.clipboard.writeText(text.value);
-        copyBtn.textContent = "Copied!";
-        setTimeout(() => {
-          copyBtn.textContent = "Copy Text";
-        }, 1200);
+        showStatus("Copied.");
       } catch (error) {
-        copyBtn.textContent = "Copy Failed";
-        setTimeout(() => {
-          copyBtn.textContent = "Copy Text";
-        }, 1200);
+        showStatus("Copy failed.");
       }
     });
 
@@ -478,19 +1183,77 @@
         text.value = clipText;
         updateCounts();
         text.focus();
-        pasteBtn.textContent = "Pasted!";
-        setTimeout(() => {
-          pasteBtn.textContent = "Paste";
-        }, 1200);
+        showStatus("Pasted.");
       } catch (error) {
-        pasteBtn.textContent = "Paste Failed";
-        setTimeout(() => {
-          pasteBtn.textContent = "Paste";
-        }, 1200);
+        showStatus("Paste failed.");
       }
     });
 
-    updateCounts();
+    saveNoteBtn.addEventListener("click", saveCurrentNote);
+    saveNoteBtn2.addEventListener("click", saveCurrentNote);
+
+    downloadBtn.addEventListener("click", function() {
+      const blob = new Blob([text.value], { type: "text/plain;charset=utf-8" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "text.txt";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(a.href);
+      showStatus("TXT downloaded.");
+    });
+
+    exportNotesBtn.addEventListener("click", function() {
+      const notes = getSavedNotes();
+      const blob = new Blob([JSON.stringify(notes, null, 2)], { type: "application/json;charset=utf-8" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "saved-notes.json";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(a.href);
+      showStatus("Notes exported.");
+    });
+
+    sampleBtn.addEventListener("click", function() {
+      text.value = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
+      updateCounts();
+      showStatus("Sample loaded.");
+    });
+
+    autosaveToggle.addEventListener("change", function() {
+      localStorage.setItem(STORAGE_AUTOSAVE, autosaveToggle.checked ? "1" : "0");
+      showStatus(autosaveToggle.checked ? "Auto save enabled." : "Auto save disabled.");
+      if (autosaveToggle.checked) {
+        localStorage.setItem(STORAGE_TEXT, text.value);
+      }
+    });
+
+    lightModeToggle.addEventListener("change", function() {
+      document.body.classList.toggle("light-mode", lightModeToggle.checked);
+      localStorage.setItem(STORAGE_LIGHTMODE, lightModeToggle.checked ? "1" : "0");
+    });
+
+    (function init() {
+      const savedAutosave = localStorage.getItem(STORAGE_AUTOSAVE);
+      autosaveToggle.checked = savedAutosave !== "0";
+
+      const savedLight = localStorage.getItem(STORAGE_LIGHTMODE);
+      lightModeToggle.checked = savedLight === "1";
+      document.body.classList.toggle("light-mode", lightModeToggle.checked);
+
+      if (autosaveToggle.checked) {
+        const savedText = localStorage.getItem(STORAGE_TEXT);
+        if (savedText) {
+          text.value = savedText;
+        }
+      }
+
+      renderNotes();
+      updateCounts();
+    })();
   </script>
 </body>
 </html>
