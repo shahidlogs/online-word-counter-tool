@@ -4,55 +4,349 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About - Online Word Counter Tool</title>
-  <meta name="description" content="Learn about Online Word Counter Tool, a free tool to count words, characters, sentences, paragraphs, and reading time online." />
+  <meta name="description" content="Learn about Online Word Counter Tool, a free tool to count words, characters, sentences, paragraphs, reading time, speaking time, and more online." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://onlinewordcountertool.com/about.html" />
+
+  <link rel="icon" href="/favicon.ico?v=3" sizes="any">
+  <link rel="shortcut icon" href="/favicon.ico?v=3">
+  <link rel="apple-touch-icon" href="/favicon.ico?v=3">
+
+  <meta property="og:title" content="About - Online Word Counter Tool" />
+  <meta property="og:description" content="Learn about Online Word Counter Tool and how it helps users count words, characters, sentences, paragraphs, and reading time." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://onlinewordcountertool.com/about.html" />
+
+  <style>
+    :root{
+      --wa-primary:#25d366;
+      --wa-primary-dark:#128c7e;
+      --wa-accent:#075e54;
+      --wa-bg:#e5ddd5;
+      --wa-chat:#dcf8c6;
+      --wa-surface:#ffffff;
+      --wa-text:#111b21;
+      --wa-muted:#667781;
+      --wa-line:#d1d7db;
+      --wa-soft:#f0f2f5;
+      --wa-shadow:0 16px 40px rgba(17,27,33,.10);
+    }
+
+    body.dark-mode{
+      --wa-primary:#25d366;
+      --wa-primary-dark:#128c7e;
+      --wa-accent:#25d366;
+      --wa-bg:#0b141a;
+      --wa-chat:#111b21;
+      --wa-surface:#202c33;
+      --wa-text:#e9edef;
+      --wa-muted:#8696a0;
+      --wa-line:#2a3942;
+      --wa-soft:#111b21;
+      --wa-shadow:0 16px 40px rgba(0,0,0,.35);
+    }
+
+    *{box-sizing:border-box}
+
+    html,body{
+      margin:0;
+      padding:0;
+      font-family:Arial,sans-serif;
+      background:var(--wa-bg);
+      color:var(--wa-text);
+    }
+
+    body{
+      line-height:1.7;
+    }
+
+    .wrapper{
+      max-width:1000px;
+      margin:0 auto;
+      padding:18px 12px 36px;
+    }
+
+    .page-shell{
+      background:var(--wa-soft);
+      border:1px solid var(--wa-line);
+      border-radius:28px;
+      overflow:hidden;
+      box-shadow:var(--wa-shadow);
+    }
+
+    .topbar{
+      background:linear-gradient(135deg,var(--wa-primary-dark),var(--wa-primary));
+      color:#fff;
+      padding:18px 18px 14px;
+      text-align:center;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      padding:6px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.18);
+      border:1px solid rgba(255,255,255,.24);
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.4px;
+      text-transform:uppercase;
+      margin-bottom:10px;
+    }
+
+    .page-title{
+      margin:0;
+      font-size:31px;
+      line-height:1.15;
+      font-weight:800;
+      letter-spacing:-.4px;
+    }
+
+    .page-intro{
+      max-width:760px;
+      margin:10px auto 0;
+      font-size:15px;
+      color:rgba(255,255,255,.92);
+    }
+
+    .theme-row{
+      display:flex;
+      justify-content:flex-end;
+      padding:12px 14px 0;
+    }
+
+    .theme-toggle{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      background:var(--wa-surface);
+      color:var(--wa-text);
+      border:1px solid var(--wa-line);
+      border-radius:12px;
+      padding:10px 12px;
+      font-size:14px;
+      font-weight:700;
+      cursor:pointer;
+    }
+
+    .content-wrap{
+      padding:14px;
+    }
+
+    .content-card{
+      background:var(--wa-surface);
+      border:1px solid var(--wa-line);
+      border-radius:22px;
+      padding:22px 18px;
+    }
+
+    .content-card h2{
+      margin:0 0 10px;
+      font-size:24px;
+      color:var(--wa-text);
+    }
+
+    .content-card h3{
+      margin:20px 0 8px;
+      font-size:18px;
+      color:var(--wa-text);
+    }
+
+    .content-card p{
+      margin:0 0 14px;
+      color:var(--wa-muted);
+      font-size:15px;
+    }
+
+    .content-card ul{
+      margin:0 0 16px 20px;
+      padding:0;
+      color:var(--wa-muted);
+    }
+
+    .content-card li{
+      margin-bottom:6px;
+      font-size:15px;
+    }
+
+    .feature-box{
+      background:var(--wa-soft);
+      border:1px solid var(--wa-line);
+      border-radius:16px;
+      padding:16px;
+      margin:18px 0;
+    }
+
+    .feature-box h3{
+      margin-top:0;
+    }
+
+    .nav-links{
+      margin-top:24px;
+      padding-top:16px;
+      border-top:1px solid var(--wa-line);
+      text-align:center;
+    }
+
+    .nav-links a{
+      display:inline-block;
+      margin:6px 8px;
+      color:var(--wa-accent);
+      text-decoration:none;
+      font-weight:700;
+    }
+
+    .nav-links a:hover{
+      text-decoration:underline;
+    }
+
+    .footer-note{
+      text-align:center;
+      color:var(--wa-muted);
+      font-size:13px;
+      padding:16px 12px 20px;
+    }
+
+    @media (max-width:680px){
+      .wrapper{
+        padding:0 0 24px;
+      }
+
+      .page-shell{
+        border-radius:0;
+        border-left:none;
+        border-right:none;
+        box-shadow:none;
+      }
+
+      .topbar{
+        padding:16px 12px 12px;
+      }
+
+      .page-title{
+        font-size:24px;
+      }
+
+      .page-intro{
+        font-size:14px;
+      }
+
+      .theme-row{
+        padding:10px 10px 0;
+      }
+
+      .content-wrap{
+        padding:10px;
+      }
+
+      .content-card{
+        padding:18px 14px;
+        border-radius:18px;
+      }
+
+      .content-card h2{
+        font-size:21px;
+      }
+
+      .content-card h3{
+        font-size:17px;
+      }
+    }
+  </style>
 </head>
-<body style="margin:0;font-family:Arial,sans-serif;background:#f3f4f6;color:#1f2937;line-height:1.7;">
-  <div style="max-width:900px;margin:0 auto;padding:24px 16px 40px;">
-    <div style="background:#f8fafc;border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.08);padding:24px;">
-      
-      <h1 style="margin:0 0 14px;text-align:center;color:#2563eb;">
-        About Online Word Counter Tool
-      </h1>
-
-      <p>
-        Online Word Counter Tool is a simple, fast, and free tool that helps users count words, characters, sentences, paragraphs, and reading time instantly.
-      </p>
-
-      <h2>Why This Tool Exists</h2>
-      <p>
-        Writers, students, bloggers, and professionals often need to know the exact length of their text. This tool was created to provide a clean and easy way to check text statistics without installing software.
-      </p>
-
-      <h2>What This Tool Can Do</h2>
-
-      <ul>
-        <li>Count words</li>
-        <li>Count characters with spaces</li>
-        <li>Count characters without spaces</li>
-        <li>Count sentences</li>
-        <li>Count paragraphs</li>
-        <li>Estimate reading time</li>
-      </ul>
-
-      <h2>Fast and Private</h2>
-      <p>
-        All text is processed directly in your browser. We do not store the text you enter for normal tool usage.
-      </p>
-
-      <h2>Free to Use</h2>
-      <p>
-        This website is free to use and will remain free. In the future, ads may be used to support the cost of hosting and development.
-      </p>
-
-      <div style="text-align:center;margin-top:24px;padding-top:14px;border-top:1px solid #e5e7eb;">
-        <a href="/" style="color:#2563eb;text-decoration:none;font-weight:600;margin:0 8px;">Home</a>
-        <a href="/privacy.html" style="color:#2563eb;text-decoration:none;font-weight:600;margin:0 8px;">Privacy</a>
-        <a href="/contact.html" style="color:#2563eb;text-decoration:none;font-weight:600;margin:0 8px;">Contact</a>
+<body>
+  <div class="wrapper">
+    <div class="page-shell">
+      <div class="topbar">
+        <div class="eyebrow">About This Tool</div>
+        <h1 class="page-title">About Online Word Counter Tool</h1>
+        <p class="page-intro">
+          Learn more about this free online tool for counting words, characters, sentences, paragraphs, reading time, speaking time, and other useful text statistics.
+        </p>
       </div>
 
+      <div class="theme-row">
+        <label class="theme-toggle">
+          <input type="checkbox" id="darkModeToggle">
+          <span>Dark Theme</span>
+        </label>
+      </div>
+
+      <div class="content-wrap">
+        <div class="content-card">
+          <h2>What Is Online Word Counter Tool?</h2>
+          <p>
+            Online Word Counter Tool is a fast, simple, and free browser-based tool that helps users instantly measure text length and text quality. It is designed for anyone who needs quick and accurate text statistics without installing software or creating an account.
+          </p>
+
+          <h3>Why This Tool Exists</h3>
+          <p>
+            Writers, students, bloggers, marketers, editors, and professionals often need to check the exact length of their text. This tool was created to offer a cleaner and easier way to view important writing statistics in real time.
+          </p>
+
+          <div class="feature-box">
+            <h3>What This Tool Can Do</h3>
+            <ul>
+              <li>Count words</li>
+              <li>Count characters with spaces</li>
+              <li>Count characters without spaces</li>
+              <li>Count sentences</li>
+              <li>Count paragraphs</li>
+              <li>Estimate reading time</li>
+              <li>Estimate speaking time</li>
+              <li>Show advanced text statistics</li>
+              <li>Save notes inside the browser</li>
+            </ul>
+          </div>
+
+          <h3>Fast and Private</h3>
+          <p>
+            All normal counting happens directly in your browser. That means your text is not sent anywhere for regular tool usage. This makes the tool fast, convenient, and better for privacy.
+          </p>
+
+          <h3>Who Can Use It?</h3>
+          <p>
+            This tool is useful for students writing assignments, bloggers preparing posts, SEO writers checking content length, social media users working on captions, and professionals reviewing documents before publishing or sharing.
+          </p>
+
+          <h3>Free to Use</h3>
+          <p>
+            This website is free to use and is intended to remain free. In the future, ads may be added to help support hosting, maintenance, and continued improvements.
+          </p>
+
+          <h3>Our Goal</h3>
+          <p>
+            The goal of Online Word Counter Tool is to provide a clean, modern, and reliable text utility that works well on desktop and mobile devices, while staying simple enough for anyone to use.
+          </p>
+
+          <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/privacy.html">Privacy</a>
+            <a href="/contact.html">Contact</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-note">
+        Simple, modern, and mobile-friendly text counting tool.
+      </div>
     </div>
   </div>
+
+  <script>
+    const darkModeToggle = document.getElementById("darkModeToggle");
+    const STORAGE_DARKMODE = "owct_darkmode_v3";
+
+    (function initTheme() {
+      const savedDark = localStorage.getItem(STORAGE_DARKMODE);
+      darkModeToggle.checked = savedDark === "1";
+      document.body.classList.toggle("dark-mode", darkModeToggle.checked);
+    })();
+
+    darkModeToggle.addEventListener("change", function () {
+      document.body.classList.toggle("dark-mode", darkModeToggle.checked);
+      localStorage.setItem(STORAGE_DARKMODE, darkModeToggle.checked ? "1" : "0");
+    });
+  </script>
 </body>
 </html>
