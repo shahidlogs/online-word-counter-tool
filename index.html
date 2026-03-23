@@ -33,6 +33,7 @@
       --wa-line:#d1d7db;
       --wa-soft:#f0f2f5;
       --wa-shadow:0 16px 40px rgba(17,27,33,.10);
+      --hero-solid:#134d37;
       --radius-xl:26px;
       --radius-lg:18px;
       --radius-md:14px;
@@ -50,6 +51,7 @@
       --wa-line:#2a3942;
       --wa-soft:#111b21;
       --wa-shadow:0 16px 40px rgba(0,0,0,.35);
+      --hero-solid:#134d37;
     }
 
     *{ box-sizing:border-box; }
@@ -82,17 +84,17 @@
 
     .hero-top{
       padding:18px 18px 10px;
-      background:linear-gradient(135deg,var(--wa-primary-dark),var(--wa-primary));
+      background:var(--hero-solid);
       color:#fff;
       text-align:center;
     }
 
     .eyebrow{
       display:inline-block;
-      padding:6px 12px;
+      padding:8px 16px;
       border-radius:999px;
-      background:rgba(255,255,255,.18);
-      border:1px solid rgba(255,255,255,.24);
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.16);
       font-size:12px;
       font-weight:700;
       letter-spacing:.4px;
@@ -127,26 +129,11 @@
       color:var(--wa-text);
     }
 
-    .app-header{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:12px;
-      margin-bottom:12px;
-      flex-wrap:wrap;
-    }
-
-    .app-title{
-      margin:0;
-      font-size:18px;
-      font-weight:800;
-      color:var(--wa-text);
-    }
-
     .top-actions{
-      display:flex;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
       gap:8px;
-      flex-wrap:wrap;
+      margin-bottom:12px;
     }
 
     .action-btn,
@@ -161,76 +148,19 @@
     }
 
     .action-btn{
-      padding:9px 13px;
-      border-radius:12px;
-      background:var(--wa-soft);
+      padding:11px 13px;
+      border-radius:14px;
+      background:var(--wa-surface);
       color:var(--wa-text);
       border:1px solid var(--wa-line);
-      font-size:14px;
+      font-size:15px;
+      width:100%;
     }
 
-    .action-btn:hover{
+    .action-btn:hover,
+    .main-btn:hover{
       transform:translateY(-1px);
     }
-
-    .tab-row{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:8px;
-      margin-bottom:12px;
-    }
-
-    .tab-btn{
-      padding:10px 8px;
-      border-radius:12px;
-      background:var(--wa-soft);
-      color:var(--wa-muted);
-      border:1px solid var(--wa-line);
-      font-size:14px;
-    }
-
-    .tab-btn.active{
-      background:var(--wa-chat);
-      color:var(--wa-text);
-      border-color:rgba(37,211,102,.38);
-    }
-
-    .summary-grid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:8px;
-      margin-bottom:12px;
-    }
-
-    .summary-box{
-      background:var(--wa-soft);
-      border:1px solid var(--wa-line);
-      border-radius:14px;
-      padding:9px 8px;
-      min-height:64px;
-      text-align:center;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-    }
-
-    .summary-label{
-      font-size:11px;
-      font-weight:700;
-      color:var(--wa-muted);
-      margin-bottom:4px;
-    }
-
-    .summary-value{
-      font-size:21px;
-      font-weight:800;
-      line-height:1.05;
-      color:var(--wa-text);
-      word-break:break-word;
-    }
-
-    .panel{ display:none; }
-    .panel.active{ display:block; }
 
     .editor-card,
     .stats-card,
@@ -243,7 +173,7 @@
     }
 
     .textarea-wrap{
-      margin-bottom:10px;
+      margin-bottom:12px;
     }
 
     textarea{
@@ -286,9 +216,64 @@
       border:1px solid var(--wa-line);
     }
 
-    .main-btn:hover{
-      transform:translateY(-1px);
+    .summary-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:8px;
+      margin:12px 0;
     }
+
+    .summary-box{
+      background:var(--wa-soft);
+      border:1px solid var(--wa-line);
+      border-radius:14px;
+      padding:9px 8px;
+      min-height:64px;
+      text-align:center;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+
+    .summary-label{
+      font-size:11px;
+      font-weight:700;
+      color:var(--wa-muted);
+      margin-bottom:4px;
+    }
+
+    .summary-value{
+      font-size:21px;
+      font-weight:800;
+      line-height:1.05;
+      color:var(--wa-text);
+      word-break:break-word;
+    }
+
+    .tab-row{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:8px;
+      margin-bottom:12px;
+    }
+
+    .tab-btn{
+      padding:10px 8px;
+      border-radius:12px;
+      background:var(--wa-soft);
+      color:var(--wa-muted);
+      border:1px solid var(--wa-line);
+      font-size:14px;
+    }
+
+    .tab-btn.active{
+      background:var(--wa-chat);
+      color:var(--wa-text);
+      border-color:rgba(37,211,102,.38);
+    }
+
+    .panel{ display:none; }
+    .panel.active{ display:block; }
 
     .status-line{
       margin-top:10px;
@@ -457,6 +442,10 @@
       color:var(--wa-text);
     }
 
+    .input-footer-actions{
+      margin-top:12px;
+    }
+
     .bottom-text{
       margin-top:18px;
       padding:20px 18px 8px;
@@ -557,26 +546,36 @@
         border:none;
       }
 
-      .app-header{
-        padding:0 0 10px;
+      .editor-card,
+      .stats-card,
+      .notes-card,
+      .settings-card{
+        padding:10px;
+        border-radius:16px;
+      }
+
+      .top-actions{
+        grid-template-columns:repeat(3,1fr);
+        gap:8px;
         margin-bottom:10px;
       }
 
-      .tab-row{
-        grid-template-columns:repeat(4,1fr);
-        gap:6px;
-        order:2;
+      .action-btn{
+        font-size:14px;
+        padding:11px 8px;
       }
 
-      .tab-btn{
-        font-size:12px;
-        padding:9px 6px;
+      textarea{
+        min-height:260px;
+        font-size:16px;
+        padding:14px;
+        border-radius:14px;
       }
 
       .summary-grid{
         grid-template-columns:repeat(4,1fr);
         gap:6px;
-        order:3;
+        margin:10px 0;
       }
 
       .summary-box{
@@ -593,61 +592,30 @@
         font-size:16px;
       }
 
-      textarea{
-        min-height:260px;
-        font-size:16px;
-        padding:14px;
-        border-radius:14px;
+      .tab-row{
+        grid-template-columns:repeat(4,1fr);
+        gap:6px;
+        margin-bottom:10px;
       }
 
-      .editor-card,
-      .stats-card,
-      .notes-card,
-      .settings-card{
-        padding:10px;
-        border-radius:16px;
+      .tab-btn{
+        font-size:12px;
+        padding:9px 6px;
       }
 
       .editor-actions,
-      .top-actions,
       .notes-top{
         display:grid;
-        grid-template-columns:1fr 1fr;
+        grid-template-columns:1fr;
       }
 
       .action-btn,
       .main-btn{
         width:100%;
       }
-
-      /* mobile par input sab se pehle */
-      .mobile-priority{
-        display:flex;
-        flex-direction:column;
-      }
-
-      .mobile-priority .panel.active{
-        order:1;
-      }
-
-      .mobile-priority .summary-grid{
-        order:2;
-        margin-top:10px;
-      }
-
-      .mobile-priority .tab-row{
-        order:3;
-        margin-top:10px;
-      }
     }
 
     @media (max-width:430px){
-      .editor-actions,
-      .top-actions,
-      .notes-top{
-        grid-template-columns:1fr;
-      }
-
       .summary-grid{
         grid-template-columns:repeat(4,1fr);
       }
@@ -658,6 +626,10 @@
 
       .summary-label{
         font-size:9px;
+      }
+
+      .top-actions{
+        grid-template-columns:repeat(3,1fr);
       }
     }
   </style>
@@ -694,21 +666,18 @@
       </div>
 
       <div class="app-shell">
-        <div class="app-card mobile-priority">
-          <div class="app-header">
-            <h2 class="app-title">Text Analyzer</h2>
-            <div class="top-actions">
-              <button class="action-btn" id="pasteBtn">Paste</button>
-              <button class="action-btn" id="copyBtn">Copy</button>
-              <button class="action-btn" id="clearBtn">Clear</button>
-            </div>
+        <div class="app-card">
+
+          <div class="top-actions">
+            <button class="action-btn" id="pasteBtn">Paste</button>
+            <button class="action-btn" id="copyBtn">Copy</button>
+            <button class="action-btn" id="clearBtn">Clear</button>
           </div>
 
-          <div class="tab-row">
-            <button class="tab-btn active" data-tab="inputPanel">Input</button>
-            <button class="tab-btn" data-tab="statsPanel">Stats</button>
-            <button class="tab-btn" data-tab="notesPanel">Notes</button>
-            <button class="tab-btn" data-tab="settingsPanel">Settings</button>
+          <div class="editor-card">
+            <div class="textarea-wrap">
+              <textarea id="text" placeholder="Type or paste your text here..." autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false"></textarea>
+            </div>
           </div>
 
           <div class="summary-grid">
@@ -730,18 +699,46 @@
             </div>
           </div>
 
-          <div class="panel active" id="inputPanel">
-            <div class="editor-card">
-              <div class="textarea-wrap">
-                <textarea id="text" placeholder="Type or paste your text here..." autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false"></textarea>
-              </div>
+          <div class="tab-row">
+            <button class="tab-btn active" data-tab="inputPanel">Input</button>
+            <button class="tab-btn" data-tab="statsPanel">Stats</button>
+            <button class="tab-btn" data-tab="notesPanel">Notes</button>
+            <button class="tab-btn" data-tab="settingsPanel">Settings</button>
+          </div>
 
+          <div class="panel active" id="inputPanel">
+            <div class="settings-card" style="margin-bottom:12px;">
+              <div class="settings-list">
+                <div class="setting-row">
+                  <div class="setting-text">
+                    <h3>Auto Save Text</h3>
+                    <p>Automatically save current text in your browser.</p>
+                  </div>
+                  <label class="switch">
+                    <input type="checkbox" id="autosaveToggle" checked>
+                    <span>On</span>
+                  </label>
+                </div>
+
+                <div class="setting-row">
+                  <div class="setting-text">
+                    <h3>Dark Theme</h3>
+                    <p>Switch between light and dark WhatsApp-style look.</p>
+                  </div>
+                  <label class="switch">
+                    <input type="checkbox" id="darkModeToggle">
+                    <span>Enable</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="editor-card input-footer-actions">
               <div class="editor-actions">
                 <button class="main-btn" id="saveNoteBtn">Save Note</button>
                 <button class="main-btn secondary" id="downloadBtn">Download TXT</button>
                 <button class="main-btn secondary" id="sampleBtn">Load Sample</button>
               </div>
-
               <div class="status-line" id="statusLine"></div>
             </div>
           </div>
@@ -797,7 +794,7 @@
                 <button class="main-btn" id="saveNoteBtn2">Save Current Text</button>
                 <button class="main-btn secondary" id="exportNotesBtn">Export Notes</button>
               </div>
-              <div id="notesWrap"></div>
+              <div id="notesWrap" style="margin-top:12px;"></div>
             </div>
           </div>
 
@@ -810,7 +807,7 @@
                     <p>Automatically save current text in your browser.</p>
                   </div>
                   <label class="switch">
-                    <input type="checkbox" id="autosaveToggle" checked>
+                    <input type="checkbox" id="autosaveToggleClone">
                     <span>On</span>
                   </label>
                 </div>
@@ -821,13 +818,14 @@
                     <p>Switch between light and dark WhatsApp-style look.</p>
                   </div>
                   <label class="switch">
-                    <input type="checkbox" id="darkModeToggle">
+                    <input type="checkbox" id="darkModeToggleClone">
                     <span>Enable</span>
                   </label>
                 </div>
               </div>
             </div>
           </div>
+
         </div>
       </div>
 
@@ -916,14 +914,16 @@
     const notesWrap = document.getElementById("notesWrap");
     const autosaveToggle = document.getElementById("autosaveToggle");
     const darkModeToggle = document.getElementById("darkModeToggle");
+    const autosaveToggleClone = document.getElementById("autosaveToggleClone");
+    const darkModeToggleClone = document.getElementById("darkModeToggleClone");
 
     const tabButtons = document.querySelectorAll(".tab-btn");
     const panels = document.querySelectorAll(".panel");
 
-    const STORAGE_TEXT = "owct_saved_text_v3";
-    const STORAGE_NOTES = "owct_saved_notes_v3";
-    const STORAGE_AUTOSAVE = "owct_autosave_v3";
-    const STORAGE_DARKMODE = "owct_darkmode_v3";
+    const STORAGE_TEXT = "owct_saved_text_v4";
+    const STORAGE_NOTES = "owct_saved_notes_v4";
+    const STORAGE_AUTOSAVE = "owct_autosave_v4";
+    const STORAGE_DARKMODE = "owct_darkmode_v4";
 
     function showStatus(message) {
       statusLine.textContent = message;
@@ -1152,6 +1152,35 @@
       });
     }
 
+    function syncSettingsToggles() {
+      autosaveToggleClone.checked = autosaveToggle.checked;
+      darkModeToggleClone.checked = darkModeToggle.checked;
+    }
+
+    function setAutosaveState(isOn, showMessage = true) {
+      autosaveToggle.checked = isOn;
+      autosaveToggleClone.checked = isOn;
+      localStorage.setItem(STORAGE_AUTOSAVE, isOn ? "1" : "0");
+
+      if (isOn) {
+        localStorage.setItem(STORAGE_TEXT, text.value);
+        if (showMessage) showStatus("Auto save enabled.");
+      } else {
+        if (showMessage) showStatus("Auto save disabled.");
+      }
+    }
+
+    function setDarkModeState(isOn, showMessage = true) {
+      darkModeToggle.checked = isOn;
+      darkModeToggleClone.checked = isOn;
+      document.body.classList.toggle("dark-mode", isOn);
+      localStorage.setItem(STORAGE_DARKMODE, isOn ? "1" : "0");
+
+      if (showMessage) {
+        showStatus(isOn ? "Dark mode enabled." : "Light mode enabled.");
+      }
+    }
+
     tabButtons.forEach(btn => {
       btn.addEventListener("click", () => switchTab(btn.dataset.tab));
     });
@@ -1221,34 +1250,36 @@
     });
 
     autosaveToggle.addEventListener("change", function() {
-      localStorage.setItem(STORAGE_AUTOSAVE, autosaveToggle.checked ? "1" : "0");
-      if (autosaveToggle.checked) {
-        localStorage.setItem(STORAGE_TEXT, text.value);
-        showStatus("Auto save enabled.");
-      } else {
-        showStatus("Auto save disabled.");
-      }
+      setAutosaveState(autosaveToggle.checked);
+    });
+
+    autosaveToggleClone.addEventListener("change", function() {
+      setAutosaveState(autosaveToggleClone.checked);
     });
 
     darkModeToggle.addEventListener("change", function() {
-      document.body.classList.toggle("dark-mode", darkModeToggle.checked);
-      localStorage.setItem(STORAGE_DARKMODE, darkModeToggle.checked ? "1" : "0");
-      showStatus(darkModeToggle.checked ? "Dark mode enabled." : "Light mode enabled.");
+      setDarkModeState(darkModeToggle.checked);
+    });
+
+    darkModeToggleClone.addEventListener("change", function() {
+      setDarkModeState(darkModeToggleClone.checked);
     });
 
     (function init() {
       const savedAutosave = localStorage.getItem(STORAGE_AUTOSAVE);
-      autosaveToggle.checked = savedAutosave !== "0";
+      const autosaveOn = savedAutosave !== "0";
+      setAutosaveState(autosaveOn, false);
 
       const savedDark = localStorage.getItem(STORAGE_DARKMODE);
-      darkModeToggle.checked = savedDark === "1";
-      document.body.classList.toggle("dark-mode", darkModeToggle.checked);
+      const darkOn = savedDark === "1";
+      setDarkModeState(darkOn, false);
 
       if (autosaveToggle.checked) {
         const savedText = localStorage.getItem(STORAGE_TEXT);
         if (savedText) text.value = savedText;
       }
 
+      syncSettingsToggles();
       renderNotes();
       updateCounts();
     })();
