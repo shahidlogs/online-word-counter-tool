@@ -4,18 +4,26 @@
 
 <url>
 <loc>https://onlinewordcountertool.com/</loc>
+<changefreq>weekly</changefreq>
+<priority>1.0</priority>
 </url>
 
 <url>
 <loc>https://onlinewordcountertool.com/about.html</loc>
+<changefreq>yearly</changefreq>
+<priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://onlinewordcountertool.com/privacy.html</loc>
+<changefreq>yearly</changefreq>
+<priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://onlinewordcountertool.com/contact.html</loc>
+<changefreq>yearly</changefreq>
+<priority>0.5</priority>
 </url>
 
 </urlset>
