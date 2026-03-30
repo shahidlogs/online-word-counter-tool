@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+
+    <!-- Primary Meta -->
+    <title>Online Word Counter Tool – Count Words, Characters, Sentences</title>
+    <meta name="description" content="Free online word counter tool with character count, sentence count, and paragraph count. Fast, accurate, and mobile-friendly." />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Online Word Counter Tool" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://06513830-360f-4286-9f70-4497bc31f707-00-1t9nkoa3bxg2b.spock.replit.dev/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://06513830-360f-4286-9f70-4497bc31f707-00-1t9nkoa3bxg2b.spock.replit.dev/" />
+    <meta property="og:title" content="Online Word Counter Tool – Count Words, Characters, Sentences" />
+    <meta property="og:description" content="Free online word counter tool with character count, sentence count, and paragraph count. Fast, accurate, and mobile-friendly." />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Online Word Counter Tool – Count Words, Characters, Sentences" />
+    <meta name="twitter:description" content="Free online word counter tool with character count, sentence count, and paragraph count. Fast, accurate, and mobile-friendly." />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+      *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --bg: #f3f4f6;
+        --surface: #ffffff;
+        --surface-hover: #f9fafb;
+        --border: #e5e7eb;
+        --text: #111827;
+        --text-muted: #6b7280;
+
+        --green: #16a34a;
+        --green-hover: #15803d;
+        --green-shadow: rgba(22, 163, 74, 0.3);
+
+        --blue: #2563eb;
+        --blue-hover: #1d4ed8;
+        --blue-shadow: rgba(37, 99, 235, 0.3);
+
+        --red: #dc2626;
+        --red-hover: #b91c1c;
+        --red-shadow: rgba(220, 38, 38, 0.3);
+
+        --accent-1: #6366f1;
+        --accent-2: #0ea5e9;
+        --accent-3: #10b981;
+        --accent-4: #f59e0b;
+        --accent-5: #ec4899;
+
+        --radius-lg: 16px;
+        --radius-sm: 8px;
+        --shadow-card: 0 2px 8px rgba(0,0,0,.06), 0 0 1px rgba(0,0,0,.06);
+      }
+
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background-color: var(--bg);
+        color: var(--text);
+        min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* ── Layout ─────────────────────────────── */
+      .app {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 48px 24px 72px;
+      }
+
+      /* ── Header ─────────────────────────────── */
+      .header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .header-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: #eef2ff;
+        color: #4f46e5;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding: 5px 14px;
+        border-radius: 999px;
+        margin-bottom: 16px;
+        border: 1px solid #c7d2fe;
+      }
+
+      h1.title {
+        font-size: clamp(1.65rem, 4.5vw, 2.5rem);
+        font-weight: 800;
+        color: var(--text);
+        letter-spacing: -0.8px;
+        line-height: 1.15;
+      }
+
+      .subtitle {
+        margin-top: 10px;
+        font-size: 1.05rem;
+        color: var(--text-muted);
+        font-weight: 400;
+        line-height: 1.5;
+      }
+
+      /* ── Main Card ──────────────────────────── */
+      .main {
+        background: var(--surface);
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow-card);
+        overflow: hidden;
+      }
+
+      /* ── Toolbar ────────────────────────────── */
+      .toolbar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 18px 22px;
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .toolbar-label {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-right: auto;
+      }
+
+      /* ── Buttons ────────────────────────────── */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        font-family: inherit;
+        font-size: 0.875rem;
+        font-weight: 600;
+        padding: 9px 18px;
+        border-radius: var(--radius-sm);
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease, opacity 0.15s;
+        white-space: nowrap;
+        line-height: 1;
+        color: #fff;
+      }
+
+      .btn:active:not(:disabled) {
+        transform: scale(0.96);
+      }
+
+      .btn:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+        box-shadow: none !important;
+      }
+
+      .btn-paste {
+        background: var(--green);
+        box-shadow: 0 2px 8px var(--green-shadow);
+      }
+      .btn-paste:hover:not(:disabled) {
+        background: var(--green-hover);
+        box-shadow: 0 4px 14px var(--green-shadow);
+      }
+
+      .btn-copy {
+        background: var(--blue);
+        box-shadow: 0 2px 8px var(--blue-shadow);
+      }
+      .btn-copy:hover:not(:disabled) {
+        background: var(--blue-hover);
+        box-shadow: 0 4px 14px var(--blue-shadow);
+      }
+
+      .btn-clear {
+        background: var(--red);
+        box-shadow: 0 2px 8px var(--red-shadow);
+      }
+      .btn-clear:hover:not(:disabled) {
+        background: var(--red-hover);
+        box-shadow: 0 4px 14px var(--red-shadow);
+      }
+
+      /* ── Textarea ───────────────────────────── */
+      .textarea-wrap {
+        border-bottom: 1px solid var(--border);
+        background: var(--surface);
+      }
+
+      #editor {
+        display: block;
+        width: 100%;
+        min-height: 300px;
+        padding: 22px 24px;
+        font-family: 'Inter', -apple-system, sans-serif;
+        font-size: 1rem;
+        line-height: 1.7;
+        color: var(--text);
+        background: transparent;
+        border: none;
+        outline: none;
+        resize: vertical;
+        transition: background-color 0.15s;
+      }
+
+      #editor::placeholder {
+        color: #9ca3af;
+      }
+
+      #editor:focus {
+        background: #fafafa;
+      }
+
+      /* ── Stats Grid ─────────────────────────── */
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        background: var(--surface);
+      }
+
+      .stat-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 28px 14px;
+        text-align: center;
+        border-right: 1px solid var(--border);
+        border-top: 1px solid var(--border);
+        transition: background-color 0.15s;
+      }
+
+      .stat-card:last-child {
+        border-right: none;
+      }
+
+      .stat-card:hover {
+        background: #fafafa;
+      }
+
+      .stat-icon-wrap {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        margin-bottom: 12px;
+      }
+
+      .stat-card:nth-child(1) .stat-icon-wrap { background: #eef2ff; }
+      .stat-card:nth-child(2) .stat-icon-wrap { background: #e0f2fe; }
+      .stat-card:nth-child(3) .stat-icon-wrap { background: #d1fae5; }
+      .stat-card:nth-child(4) .stat-icon-wrap { background: #fef3c7; }
+      .stat-card:nth-child(5) .stat-icon-wrap { background: #fce7f3; }
+
+      .stat-value {
+        font-size: 2rem;
+        font-weight: 800;
+        letter-spacing: -1px;
+        line-height: 1;
+        margin-bottom: 6px;
+      }
+
+      .stat-card:nth-child(1) .stat-value { color: var(--accent-1); }
+      .stat-card:nth-child(2) .stat-value { color: var(--accent-2); }
+      .stat-card:nth-child(3) .stat-value { color: var(--accent-3); }
+      .stat-card:nth-child(4) .stat-value { color: var(--accent-4); }
+      .stat-card:nth-child(5) .stat-value { color: var(--accent-5); }
+
+      .stat-label {
+        font-size: 0.68rem;
+        font-weight: 600;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
+        line-height: 1.4;
+      }
+
+      /* ── Mobile ─────────────────────────────── */
+      @media (max-width: 680px) {
+        .app {
+          padding: 28px 14px 56px;
+        }
+
+        .toolbar {
+          padding: 14px 16px;
+          gap: 8px;
+          flex-wrap: wrap;
+        }
+
+        .toolbar-label {
+          width: 100%;
+          margin-right: 0;
+          margin-bottom: 2px;
+        }
+
+        .btn {
+          padding: 8px 14px;
+          font-size: 0.82rem;
+          flex: 1;
+          justify-content: center;
+        }
+
+        #editor {
+          min-height: 220px;
+          padding: 18px 16px;
+          font-size: 0.95rem;
+        }
+
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .stat-card {
+          padding: 22px 12px;
+        }
+
+        .stat-card:nth-child(2n) {
+          border-right: none;
+        }
+
+        .stat-card:nth-child(5) {
+          border-right: none;
+          grid-column: span 2;
+        }
+
+        .stat-value {
+          font-size: 1.6rem;
+        }
+      }
+
+      @media (max-width: 400px) {
+        .stat-value { font-size: 1.4rem; }
+        h1.title { letter-spacing: -0.5px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <div class="header-badge">✦ Free SEO Tool</div>
+        <h1 class="title">Online Word Counter Tool</h1>
+        <p class="subtitle">Count words, characters, sentences, and paragraphs instantly</p>
+      </header>
+
+      <main class="main">
+        <div class="toolbar">
+          <span class="toolbar-label">Text Editor</span>
+          <button class="btn btn-paste" id="btn-paste">📋 Paste</button>
+          <button class="btn btn-copy" id="btn-copy" disabled>📄 Copy</button>
+          <button class="btn btn-clear" id="btn-clear" disabled>🗑️ Clear</button>
+        </div>
+
+        <div class="textarea-wrap">
+          <textarea
+            id="editor"
+            placeholder="Start typing or paste your text here to get instant word, character, sentence and paragraph counts..."
+            spellcheck="false"
+          ></textarea>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon-wrap">✏️</div>
+            <div class="stat-value" id="stat-words">0</div>
+            <div class="stat-label">Words</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon-wrap">🔤</div>
+            <div class="stat-value" id="stat-chars-spaces">0</div>
+            <div class="stat-label">Chars with spaces</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon-wrap">🔡</div>
+            <div class="stat-value" id="stat-chars-nospaces">0</div>
+            <div class="stat-label">Chars no spaces</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon-wrap">💬</div>
+            <div class="stat-value" id="stat-sentences">0</div>
+            <div class="stat-label">Sentences</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon-wrap">📄</div>
+            <div class="stat-value" id="stat-paragraphs">0</div>
+            <div class="stat-label">Paragraphs</div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      const editor      = document.getElementById('editor');
+      const btnPaste    = document.getElementById('btn-paste');
+      const btnCopy     = document.getElementById('btn-copy');
+      const btnClear    = document.getElementById('btn-clear');
+
+      const statWords       = document.getElementById('stat-words');
+      const statCharsSpaces = document.getElementById('stat-chars-spaces');
+      const statCharsNo     = document.getElementById('stat-chars-nospaces');
+      const statSentences   = document.getElementById('stat-sentences');
+      const statParagraphs  = document.getElementById('stat-paragraphs');
+
+      function countWords(text) {
+        if (!text.trim()) return 0;
+        return text.trim().split(/\s+/).filter(w => w.length > 0).length;
+      }
+
+      function countSentences(text) {
+        if (!text.trim()) return 0;
+        const matches = text.match(/[^.!?]*[.!?]+/g);
+        return matches ? matches.length : 0;
+      }
+
+      function countParagraphs(text) {
+        if (!text.trim()) return 0;
+        return text.split(/\n+/).filter(p => p.trim().length > 0).length;
+      }
+
+      function updateStats() {
+        const text = editor.value;
+        const hasText = text.length > 0;
+
+        statWords.textContent       = countWords(text).toLocaleString();
+        statCharsSpaces.textContent = text.length.toLocaleString();
+        statCharsNo.textContent     = text.replace(/\s/g, '').length.toLocaleString();
+        statSentences.textContent   = countSentences(text).toLocaleString();
+        statParagraphs.textContent  = countParagraphs(text).toLocaleString();
+
+        btnCopy.disabled  = !hasText;
+        btnClear.disabled = !hasText;
+      }
+
+      editor.addEventListener('input', updateStats);
+
+      btnPaste.addEventListener('click', async () => {
+        try {
+          const text = await navigator.clipboard.readText();
+          editor.value = text;
+          updateStats();
+        } catch (e) {
+          editor.focus();
+        }
+      });
+
+      btnCopy.addEventListener('click', async () => {
+        if (!editor.value) return;
+        try {
+          await navigator.clipboard.writeText(editor.value);
+          btnCopy.textContent = '✓ Copied!';
+          setTimeout(() => { btnCopy.textContent = '📄 Copy'; }, 2000);
+        } catch (e) {}
+      });
+
+      btnClear.addEventListener('click', () => {
+        editor.value = '';
+        updateStats();
+      });
+    </script>
+  </body>
+</html>
